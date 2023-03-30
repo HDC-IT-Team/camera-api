@@ -4,8 +4,9 @@
   "main": "app.ts",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon app.ts",
-    "compile": "tsc -p ."
+    "dev": "nodemon src/app.ts --exec ts-node",
+    "start": "ts-node dist/app.js",
+    "build": "tsc -p ."
   },
   "dependencies": {
     "bcrypt": "^5.1.0",
@@ -29,7 +30,6 @@
     "nodemon": "^2.0.21",
     "sequelize-cli": "^6.6.0",
     "ts-node": "^10.9.1",
-    "ts-node-dev": "^2.0.0",
     "typescript": "^4.9.5"
   }
 }

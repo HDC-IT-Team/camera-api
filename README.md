@@ -2,15 +2,19 @@
 
 #### Please make sure you have the next packages globally installed (with NPM):
 
-- nodemon
 - yarn
 
-`npm install -g nodemon yarn`
+`npm install -g yarn`
 
 #### Now you can run:
 
 `yarn install`
 
-#### And finally:
+#### For running locally:
 
+`npm run dev`
+
+#### For Production:
+
+`npm run build`
 `npm start`
