@@ -28,7 +28,7 @@ jobs:
 
         - script: |
             npm install
-            npm run build
+            npm start
           displayName: 'npm install and build'
 
         - task: CopyFiles@2
