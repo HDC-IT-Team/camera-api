@@ -1,0 +1,68 @@
+# Node.js
+# Build a general Node.js project with npm.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+
+trigger:
+- Production
+- Development
+
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+  ${{ if contains(variables['Build.SourceBranch'], 'development') }}:
+   CONFIG: 'development'
+
+  ${{ if contains(variables['Build.SourceBranch'], 'production') }}:   
+   CONFIG: 'production'
+
+jobs: 
+  - job: development
+    condition: eq(variables.CONFIG, 'development') 
+    steps:
+        - task: NodeTool@0
+          inputs:
+            versionSpec: '16.x'
+          displayName: 'Install Node.js'
+
+        - script: |
+            npm install
+            npm run build
+          displayName: 'npm install and build'
+
+        - task: CopyFiles@2
+          inputs:
+                SourceFolder: '$(Build.SourcesDirectory)'
+                Contents: 'package.json'
+                TargetFolder: $(Build.ArtifactStagingDirectory)/npm
+
+        - task: PublishBuildArtifacts@1
+          inputs:
+                PathtoPublish: '$(Build.ArtifactStagingDirectory)/npm'
+                ArtifactName: npm
+
+  - job: production
+    condition: eq(variables.CONFIG, 'production')
+
+    steps:
+        - task: NodeTool@0
+          inputs:
+            versionSpec: '16.x'
+          displayName: 'Install Node.js'
+
+        - script: |
+            npm install
+            npm run build
+          displayName: 'npm install and build'
+
+        - task: CopyFiles@2
+          inputs:
+                SourceFolder: '$(Build.SourcesDirectory)'
+                Contents: 'package.json'
+                TargetFolder: $(Build.ArtifactStagingDirectory)/npm
+
+        - task: PublishBuildArtifacts@1
+          inputs:
+                PathtoPublish: '$(Build.ArtifactStagingDirectory)/npm'
+                ArtifactName: npm
