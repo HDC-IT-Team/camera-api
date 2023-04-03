@@ -40,7 +40,7 @@ jobs:
         - task: PublishBuildArtifacts@1
           inputs:
                 PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-                ArtifactName: npm
+                ArtifactName: drop
 
   - job: production
     condition: eq(variables.CONFIG, 'production')
