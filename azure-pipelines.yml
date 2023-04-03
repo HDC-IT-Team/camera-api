@@ -33,7 +33,7 @@ jobs:
 
         - task: CopyFiles@2
           inputs:
-                SourceFolder: '$(Build.SourcesDirectory)'
+                SourceFolder: '$(Build.Repository.LocalPath)/dist'
                 Contents: 'package.json'
                 TargetFolder: $(Build.ArtifactStagingDirectory)/npm
 
