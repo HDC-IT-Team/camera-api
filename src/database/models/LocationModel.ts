@@ -24,7 +24,7 @@ class LocationModel extends Model implements Location {
                     primaryKey: true
                 },
                 locationName: {
-                    type: DataTypes.TEXT,
+                    type: DataTypes.STRING,
                     unique: true,
                     allowNull: false
                 },

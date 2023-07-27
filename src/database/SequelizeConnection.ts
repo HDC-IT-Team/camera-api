@@ -1,13 +1,23 @@
 import { Sequelize } from "sequelize";
 
+const DATA_BASE_HOST: string = <string>process.env.DATA_BASE_HOST;
+const DATA_BASE_PORT: number | any = <number | any>process.env.DATA_BASE_PORT;
+const DATA_BASE_USERNAME: string = <string>process.env.DATA_BASE_USERNAME;
+const DATA_BASE_PASSWORD: string = <string>process.env.DATA_BASE_PASSWORD;
+const DATA_BASE_NAME: string = <string>process.env.DATA_BASE_NAME;
+
 class SequelizeConnection {
     private static instance: Sequelize;
 
     static getInstance(): Sequelize {
         if (!SequelizeConnection.instance) {
             SequelizeConnection.instance = new Sequelize({
-                dialect: 'sqlite',
-                storage: './db/camera_db.sqlite'
+                dialect: 'mysql',
+                host: DATA_BASE_HOST,
+                port: DATA_BASE_PORT,
+                username: DATA_BASE_USERNAME,
+                password: DATA_BASE_PASSWORD,
+                database: DATA_BASE_NAME
             });
         }
 

@@ -28,7 +28,7 @@ class UserModel extends Model implements User {
           allowNull: false
         },
         password: {
-          type: DataTypes.TEXT,
+          type: DataTypes.STRING,
           allowNull: false,
         },
       },

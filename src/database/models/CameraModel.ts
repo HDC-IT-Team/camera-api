@@ -28,7 +28,7 @@ class CameraModel extends Model implements Camera {
                     allowNull: false
                 },
                 cameraName: {
-                    type: DataTypes.TEXT,
+                    type: DataTypes.STRING,
                     unique: true,
                     allowNull: false
                 },

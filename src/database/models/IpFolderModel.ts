@@ -25,7 +25,7 @@ class IpFolderModel extends Model implements IpFolder {
                     primaryKey: true
                 },
                 folderName: {
-                    type: DataTypes.TEXT,
+                    type: DataTypes.STRING,
                     unique: true,
                     allowNull: false
                 },
