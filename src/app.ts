@@ -16,7 +16,7 @@ import ipFolderRoutes from './routes/IpFolderRoutes';
 
 import { CameraHandler } from "./handler/camera-handler";
 
-const APP_CORS_ARRAY = <Array<string> | any>process.env.APP_CORS_IPS;
+const APP_CORS = <string>process.env.APP_CORS;
 const app = express();
 
 (async () => {
@@ -43,7 +43,7 @@ process.on('SIGINT', () => {
 });
 
 app.use(cors({
-  origin: APP_CORS_ARRAY
+  origin: APP_CORS
 }));
 
 app.use(bodyParser.json());
