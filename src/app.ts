@@ -16,7 +16,7 @@ import ipFolderRoutes from './routes/IpFolderRoutes';
 
 import { CameraHandler } from "./handler/camera-handler";
 
-const APP_CORS_ARRAY = JSON.parse(process.env.APP_CORS_IPS || '[]');
+const APP_CORS_ARRAY = <Array<string> | any>process.env.APP_CORS_IPS;
 const app = express();
 
 (async () => {
