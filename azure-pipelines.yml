@@ -34,7 +34,10 @@ jobs:
         - task: CopyFiles@2
           inputs:
                 SourceFolder: '$(Build.Repository.LocalPath)'
-                Contents: '**'
+                Contents: |
+                  package.json
+                  .env
+                  dist/**
                 TargetFolder: $(Build.ArtifactStagingDirectory)
 
         - task: PublishBuildArtifacts@1
